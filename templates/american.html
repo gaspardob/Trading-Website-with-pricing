@@ -1,0 +1,290 @@
+
+
+</html>
+
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Options_am</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function calculatePrice_buy_am() {
+        var Nom = document.getElementById('option_name_buy_am').value;
+        var Prix = document.getElementById('K_buy_am').value;
+        var Echeance = document.getElementById('T_buy_am').value;
+
+        
+
+        fetch(`/prix_americain_buy/${Echeance}/${Nom}/${Prix}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('price_buy').innerText = 'Prix: ' + data.resultat_americaine;
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function calculatePrice_sell_am() {
+        var Nom = document.getElementById('option_name_sell_am').value;
+        var Prix = document.getElementById('K_sell_am').value;
+        var Echeance = document.getElementById('T_sell_am').value;
+
+        
+
+        fetch(`/prix_americain_sell/${Echeance}/${Nom}/${Prix}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('price_sell').innerText = 'Prix: ' + data.resultat_americaine;
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    </script>
+  
+    <style>
+      /* Ajoutez du CSS pour aligner les éléments côte à côte */
+      .input-container {
+      display: flex;
+      flex-direction: row; /* Utilisez "row" pour afficher les éléments côte à côte */
+      gap: 10px; /* Espace entre les éléments enfants */
+      }
+    
+      /* Ajoutez du CSS pour ajuster la largeur et la hauteur des barres de saisie */
+      .input-container input {
+        width: 500px; /* Ajustez la largeur selon vos besoins */
+        height: 30px; /* Ajustez la hauteur selon vos besoins */
+        box-sizing: border-box; /* Pour inclure la bordure et le padding dans la largeur et la hauteur */
+      }
+    
+    
+    
+    input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    }
+    
+    button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+    
+    a.button-primary {
+    display: block;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-top: 200px;
+    }
+    
+    a.button-primary:hover,
+    button:hover {
+    opacity: 0.8;
+    }
+
+    .user-portfolio table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-portfolio th, .user-portfolio td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.user-portfolio th {
+    background-color: #2a303b;
+    color: white;
+}
+
+        </style>
+    
+
+
+
+<body>
+    <div class="banner">
+        <!-- Menu horizontal pour les onglets -->
+        <nav class="navigation">
+            <ul>
+                <li><a href="{{ url_for('index') }}"> Mon Compte</a></li>
+                <li><a href="{{ url_for('actions') }}"> Actions</a></li>
+                <li><a href="{{ url_for('american') }}"> Options américaines</a></li>
+                <li><a href="{{ url_for('european') }}"> Options européennes</a></li>
+                <li><a href="{{ url_for('about_us') }}"> About us</a></li>
+                <a href="/logout">Déconnexion</a>
+            </ul>
+        </nav>
+    </div>
+
+
+    
+       
+
+  <main id="main-container" class="main-container">
+    <header class="header">
+      <h1 class="header-title">Marché d'options américaines</h1>
+    </header>
+    <section class="messages-container" id="messages-container">
+      <div class="message">
+        AI powered pricer for quantitative finance. 
+      </div>
+    </section>
+
+
+    <p>Bonjour, {{ username }} ! Votre solde actuel est de {{ balance }} euros.</p>
+    
+
+    <h4>Acheter ou vendre des options américaines</h4>
+
+    <h4>ACHAT</h4>
+
+    <div class="buy_american_option">
+      <form action="/buy_american_option" method="post">
+        <label for="option_name_buy_am">Nom de l'option:</label>
+        <input type="text" id="option_name_buy_am" name="option_name_buy_am" required>
+
+        <label for="Maturité">Prix d'exercice de l'option:</label>
+        <input type="number" id="K_buy_am" name="K_buy_am" required>
+
+        <label for="échéance">date d'échéance:</label>
+        <input type="number" id="T_buy_am" name="T_buy_am" required>
+        
+        <button type="button" onclick="calculatePrice_buy_am()">Calculer le Prix</button>
+          <span id="price_buy"></span><br><br>
+
+  <label for="number_of_option_sell_am">Nombre d'options:</label>
+  <input type="number" id="number_of_option_buy_am" name="number_of_option_buy_am" required>
+  
+        <button type="submit" name="buy_button">Acheter</button>
+      </form>
+    </div>
+    
+    <!-- Formulaire pour acheter des actions -->
+
+    <h4>VENTE</h4>
+
+    <div class="sell_american_option">
+      <form action="/sell_american_option" method="post">
+        <label for="option_name_sell_eur">Nom de l'option:</label>
+        <input type="text" id   ="option_name_sell_am" name="option_name_sell_am" required>
+  
+        <label for="Maturité">Prix d'exercice de l'option:</label>
+        <input type="number" id="K_sell_am" name="K_sell_am" required>
+
+        <label for="échéance">date d'échéance:</label>
+        <input type="number" id="T_sell_am" name="T_sell_am" required>
+        
+        <button type="button" onclick="calculatePrice_sell_am()">Calculer le Prix</button>
+        <span id="price_sell"></span><br><br>
+
+        <label for="number_of_option_sell_eur">Nombre d'options:</label>
+        <input type="number" id="number_of_option_sell_am" name="number_of_option_sell_am" required>
+  
+        <button type="submit" name="buy_button">Vendre</button>
+      </form>
+    </div>
+
+   
+    
+    <!-- Formulaire pour vendre des actions -->
+    <!-- <div class="sell-stock">
+      <form action="/sell_stock" method="post">
+        <label for="stock_name">Nom de l'action:</label>
+        <input type="text" id="stock_name_sell" name="stock_name_sell" required>
+  
+        <label for="stock_number">Nombre d'actions:</label>
+        <input type="number" id="stock_number_sell" name="stock_number_sell" required>
+  
+        <button type="submit" name="buy_button">Vendre</button>
+      </form>
+    </div> -->
+    <!-- Barre de saisie de texte -->
+    <!-- <h4>Saisissez le symbole ou le nom de l'actions qui vous intéresse : </h4>
+<div class="input-container">
+  <input list="stockSuggestions" type="text" id="inputText" placeholder="SYMBOLE">
+  <input list="nomsSuggestions" type="text" id="inputText2" placeholder="NOM">
+  <datalist id="stockSuggestions"></datalist>
+  <datalist id="nomsSuggestions"></datalist>
+</div> -->
+
+<div class="user-portfolio">
+  <h2>User's Portfolio</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Option Name</th>
+        
+        <th>Maturity</th>
+        <th>Expiration</th>
+        <th>Quantity</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for stock_name, data in american_option_portfolio.items()  %}
+      {% for K, T_data in data.items() %}
+        {% for T, quantity in T_data.items() %}
+        <tr>
+          <td>{{ stock_name }}</td>
+          <td>{{ K }}</td>
+          <td>{{ T }}</td>
+          <td>{{ quantity }}</td>
+        </tr>
+        {% endfor %}
+    {% endfor %}
+    {% endfor %}
+    </tbody>
+
+    {% with messages = get_flashed_messages() %}
+{% if messages %}
+  <ul class="flash-messages">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endwith %}
+</div>
+
+
+    
+    <!-- <tbody>
+      {% for option_name, option_data in american_option_portfolio.items() %}
+        <tr>
+          <td>{{ option_name }}</td>
+          <td>{{ option_data['quantity'] }}</td>
+          <td>{{ option_data['maturity'] }}</td>
+          <td>{{ option_data['expiration'] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody> -->
+  </table>
+</div>
+
+
+  <script src="{{ url_for('static', filename='prompt.js') }}"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,45 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <title>Pricer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body class="fade-in">
+  <div class="banner">
+    <!-- Menu horizontal pour les onglets -->
+    <nav class="navigation">
+      <ul>
+        <li><a href="{{ url_for('index') }}">Pricer</a></li>
+        <li><a href="{{ url_for('about_us') }}">About us</a></li>
+      </ul>
+      <!-- Bouton Dark Mode dans la bannière -->
+      <button id="dark-mode-toggle">Activer/Désactiver le Mode Sombre</button>
+    </nav>
+  </div>
+
+  <main id="main-container" class="main-container">
+    <header class="header">
+      <h1 class="header-title">Pricer</h1>
+    </header>
+
+
+    
+    <head>
+        <title>Résultat</title>
+    </head>
+    <body>
+        <h1>Résultat du calcul :</h1>
+        <p>Le résultat est : {{ resultat_european }}</p>
+    </body>
+  </main>
+  <script src="{{ url_for('static', filename='prompt.js') }}"></script>
+  </main>
+  <script src="{{ url_for('static', filename='prompt.js') }}"></script>
+</body>
+
+</html>

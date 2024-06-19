@@ -1,0 +1,7 @@
+name: tdlog2324-tp3
+channels:
+  - default
+dependencies:
+  - black=23.3.0
+  - flake8=6.0.0
+  - pytest=7.4.0

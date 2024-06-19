@@ -1,0 +1,96 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <title>Pricer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body class="fade-in">
+  <div class="banner">
+    <!-- Menu horizontal pour les onglets -->
+    <nav class="navigation">
+      <ul>
+        <!-- <li><a href="{{ url_for('index') }}">Pricer</a></li>
+        <li><a href="{{ url_for('about_us') }}">About us</a></li> -->
+        <li><a href="{{ url_for('index') }}"> Mon Compte</a></li>
+        <li><a href="{{ url_for('actions') }}"> Actions</a></li>
+        <li><a href="{{ url_for('american') }}"> Options américaines</a></li>
+        <li><a href="{{ url_for('european') }}"> Options européennes</a></li>
+        <li><a href="{{ url_for('about_us') }}"> About us</a></li>
+        <a href="/logout">Déconnexion</a>
+      </ul>
+      <!-- Bouton Dark Mode dans la bannière -->
+      
+    </nav>
+  </div>
+
+  <main id="main-container" class="main-container">
+    <header class="header">
+      <h1 class="header-title">Pricer</h1>
+    </header>
+
+    <section class="messages-container" id="messages-container">
+      <div class="message message-ai">
+        AI powered pricer for quantitative finance. 
+      </div>
+    </section>
+
+    <div class="about-us-content">
+      <p class="bubble-text">Rentre les différents paramètres :</p>
+    </div>
+    
+
+    <!-- Formulaire pour les paramètres -->
+    <div class="form-container">
+      <form id="price-form" class="rounded-form" action="/resultat_americaine" method="post">
+        <!-- <div class="form-group">
+          <label for="spot_price_0">Prix sport S0:</label>
+          <input type="text" id="spot_price_0" name="spot_price_0" required>
+        </div> -->
+
+        <div class="form-group">
+          <label for="strike_K">Prix Strike K :</label>
+          <input type="text" id="strike_K" name="strike_K" required>
+        </div>
+
+        <div class="form-group">
+          <label for="maturity_T">Maturité T:</label>
+          <input type="text" id="maturity_T" name="maturity_T" required>
+        </div>
+
+        <!-- <div class="form-group">
+          <label for="number_of_period">Nombre de périodes :</label>
+          <input type="text" id="number_of_period" name="number_of_period" required>
+        </div> -->
+        
+
+        <div class="form-group">
+          <label for="taux_r">Taux sans risque :</label>
+          <input type="text" id="taux_r" name="taux_r" required>
+        </div>
+        
+
+        <div class="form-group">
+          <label for="up">symbol :</label>
+          <input type="text" id="stock_symbol_am" name="stock_symbol_am" required>
+        </div>
+
+        
+
+        <!-- Autres paramètres à ajouter selon vos besoins -->
+
+        <button type="submit" id="calculate-price">Calcul du prix</button>
+      </form>
+    </div>
+
+  </main>
+  <script src="{{ url_for('static', filename='prompt.js') }}"></script>
+  </main>
+  <script src="{{ url_for('static', filename='prompt.js') }}"></script>
+</body>
+
+</html>

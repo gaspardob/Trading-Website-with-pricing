@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>About Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="banner">
+        <!-- Menu horizontal pour les onglets -->
+        <nav class="navigation">
+            <ul>
+                <li><a href="{{ url_for('index') }}"> Mon Compte</a></li>
+                <li><a href="{{ url_for('actions') }}"> Actions</a></li>
+                <li><a href="{{ url_for('american') }}"> Options américaines</a></li>
+                <li><a href="{{ url_for('european') }}"> Options européennes</a></li>
+                <li><a href="{{ url_for('about_us') }}"> About us</a></li>
+                <a href="/logout">Déconnexion</a>
+            
+            </ul>
+        </nav>
+    
+    </div>
+
+    <main id="main-container" class="main-container">
+        <header class="header">
+            <h1 class="header-title">About Us</h1>
+        </header>
+
+        <!-- Contenu de la page "About Us" -->
+            <p>Nous sommes une équipe d'étudiants surdoués d'IMI, composé de Yentl, Gaspard, Clément (et Florian).</p>
+    </main>
+
+    <script src="{{ url_for('static', filename='prompt.js') }}"></script>
+</body>
+
+</html>

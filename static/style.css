@@ -1,0 +1,373 @@
+:root {
+  --body-background-color: #ffffff;
+  --main-background-color: #ffffff;
+  --main-color: #2a303b;
+  --max-body-width: 700px;
+  --border-color: #cccccc;
+  --secondary-color: #fff6d3;
+  --loader-bullet-size: 6px;
+  --font-family: 'Roboto', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+@font-face {
+  font-family: 'Serial Limerick';
+  src: url('Limerick-Serial Regular.ttf') format('truetype');
+  /* Ajoutez d'autres formats de police au besoin */
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: var(--body-background-color);
+  color: #bbc2e3;
+  padding: 0;
+  margin: 0;
+  font-family: 'Serial Limerick', sans-serif; /* Utilisation uniquement de Serial Limerick sans de secours */
+  font-size: 16px;
+  background-image: url('nice_background.jpg'); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* ... autres styles ... */
+}
+
+
+.banner {
+  background-color: #030a40;
+  color: rgb(186, 176, 176);
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  /* Fixe la bannière en haut de la fenêtre */
+}
+
+
+/* Ajoutez ces styles spécifiques pour la page "About us" */
+.about-us-content {
+  background-color: #2a2b28;
+  /* Couleur d'arrière-plan pour la page "About Us" */
+  padding: 8px;
+  margin: 80px;
+  border-radius: 80px;
+}
+
+/* Le reste de vos styles CSS existants */
+
+.bubble-text {
+  position: relative;
+  top: 90%;
+  transform: translateY(-10%);
+  text-align: center;
+}
+
+
+
+
+.navigation ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  /* Utilisation de flexbox pour afficher en ligne */
+  justify-content: center;
+  /* Centrer horizontalement les éléments */
+}
+
+
+
+
+.navigation li {
+  list-style: none;
+  /* Supprimer les puces */
+  margin-right: 20px;
+  /* Espacement entre les éléments */
+}
+
+.navigation li:last-child {
+  margin-right: 0;
+  /* Supprimer la marge à droite du dernier élément */
+}
+
+.navigation a {
+  color: white;
+  text-decoration: none;
+}
+
+
+.navigation a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Autres styles pour votre page */
+
+
+/* Assurez-vous d'ajuster ces styles en fonction de vos préférences de conception */
+
+
+/* Assurez-vous d'ajuster ces styles en fonction de vos préférences de conception */
+
+.main-container {
+  max-width: var(--max-body-width);
+  min-height: 100vh;
+  /*background-color: var(--main-background-color);*/
+  /*color: var(--main-color);*/
+  padding: 50px;
+  margin: 0 auto;
+}
+
+
+
+.header {
+  text-align: center;
+}
+
+.header-title {
+  margin-top: 0;
+  font-size: 50px;
+}
+
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.message {
+  border-color: #cacbe6; /* Couleur de la bordure */
+  border-width: 3px; /* Largeur de la bordure */
+  border-style: solid; /* Style de la bordure */
+  border-radius: 500px;
+  padding: 10px 15px;
+  font-size: 20px;
+}
+
+
+.message-human {
+  background-color: var(--secondary-color);
+}
+
+
+
+.button {
+  border: 1px solid var(--border-color);
+  padding: 5px;
+  border-radius: 5px;
+  background-color: var(--main-background-color);
+}
+
+.button:hover,
+.button:active {
+  background-color: var(--body-background-color);
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Loader code taken from https://loading.io/css/ */
+.loader {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: var(--loader-bullet-size);
+}
+
+.loader div {
+  position: absolute;
+  top: 0;
+  width: var(--loader-bullet-size);
+  height: var(--loader-bullet-size);
+  border-radius: 50%;
+  background-color: var(--main-color);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.loader div:nth-child(1) {
+  left: calc(var(--loader-bullet-size) * 0.5);
+  animation: loader1 0.6s infinite;
+}
+
+.loader div:nth-child(2) {
+  left: calc(var(--loader-bullet-size) * 0.5);
+  animation: loader2 0.6s infinite;
+}
+
+.loader div:nth-child(3) {
+  left: calc(var(--loader-bullet-size) * 2.5);
+  animation: loader2 0.6s infinite;
+}
+
+.loader div:nth-child(4) {
+  left: calc(var(--loader-bullet-size) * 4);
+  animation: loader3 0.6s infinite;
+}
+
+@keyframes loader1 {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes loader3 {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes loader2 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(calc(var(--loader-bullet-size) * 2), 0);
+  }
+}
+
+/* Styles pour la bannière, le menu horizontal, etc. (inchangé) */
+
+/* Styles pour le formulaire et le résultat */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.rounded-form {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 500px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#calculate-price {
+  padding: 10px 20px;
+  background-color: #2a303b;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#calculate-price:hover {
+  background-color: #1c1f25;
+}
+
+.rounded-result {
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+
+/* Ajoutez ceci à votre fichier style.css */
+
+.option-buttons {
+  display: flex;
+  justify-content: center; /* Pour centrer horizontalement les boutons */
+  margin-top: 20px; /* Pour ajouter de l'espace en haut des boutons */
+}
+
+.option-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #2a303b;
+  color: white;
+  transition: background-color 0.3s ease;
+  margin: 0 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Ajout de la transition */
+}
+
+.option-buttons button:hover {
+  background-color: #1c1f25;
+  transform: scale(1.05); /* Effet d'agrandissement au survol */
+}
+
+/* CSS pour le fondu de l'arrière-plan */
+.fade-in {
+  position: relative;
+  overflow: hidden;
+  background-color: #000; /* Couleur de fond noire */
+}
+
+.fade-in::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('nice_background.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0; /* Démarre avec une opacité nulle (image invisible) */
+  z-index: -1;
+  animation: fadeInBackground 6s ease-in-out forwards; /* Ajustez la durée selon vos besoins */
+}
+
+@keyframes fadeInBackground {
+  0% {
+    opacity: 0.25; /* Commence totalement transparent */
+  }
+  100% {
+    opacity: 1; /* Devient totalement opaque pour montrer l'image */
+  }
+}
+
+
+
+.scale-in {
+  animation: scaleInAnimation 0.5s ease-in-out forwards;
+}
+
+@keyframes scaleInAnimation {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
