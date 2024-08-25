@@ -1,5 +1,7 @@
 # TDLOG Project ENPC
 
+It is a website, where you can create an account and invest in stocks for fun (access of real stock actions trough APIs). Then you can also buy some actions (american or european thanks to a pricer).
+
 ## Install
 
 - when opening VSCode, install the suggested extensions (Python, Black Formatter and Pylance)
@@ -18,5 +20,4 @@ You can deactivate the environment with `deactivate`.
 
 if you need to use a new librairies, you can do it with pip
 `pip install [library name]` or `pip3 install [library name]`
-# Site-Pricer
 # Site-Pricer
