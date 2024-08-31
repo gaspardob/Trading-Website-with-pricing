@@ -1,4 +1,4 @@
-# TDLOG Project ENPC
+# Trading Website with pricing
 
 It is a website, where you can create an account and invest in stocks for fun (access of real stock actions trough APIs). Then you can also buy some actions (american or european thanks to a pricer).
 
